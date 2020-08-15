@@ -20,30 +20,17 @@ class PlayAudioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         refreshButtons()
 
     }
     
     func refreshButtons() {
         
-        print("Refreshing Buttons")
+        let btns = [btnSlow, btnFast, btnLowPitch, btnHighPitch, btnEcho, btnReverb]
         
-        btnSlow.imageView?.contentMode = .scaleAspectFit
-        btnFast.imageView?.contentMode = .scaleAspectFit
-        btnLowPitch.imageView?.contentMode = .scaleAspectFit
-        btnHighPitch.imageView?.contentMode = .scaleAspectFit
-        btnEcho.imageView?.contentMode = .scaleAspectFit
-        btnReverb.imageView?.contentMode = .scaleAspectFit
-        btnStop.imageView?.contentMode = .scaleAspectFit
-        
-    }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        // refreshButtons()
+        for b in btns {
+            b?.imageView?.contentMode = .scaleAspectFit
+        }
         
     }
     
