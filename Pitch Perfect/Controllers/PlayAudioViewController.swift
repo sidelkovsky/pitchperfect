@@ -19,15 +19,17 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var btnStop: UIButton!
     
     var isPlaying : Bool = false
+    var recordedAudioURL:URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshButtons()
+        updateUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        stopAudio(btnStop)
+        stopAudio(btnStop as Any)
     }
     
     // fix to adjust button sizes for smaller screens
