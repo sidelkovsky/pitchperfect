@@ -18,12 +18,19 @@ class PlayAudioViewController: UIViewController {
     @IBOutlet weak var btnReverb: UIButton!
     @IBOutlet weak var btnStop: UIButton!
     
+    var isPlaying : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshButtons()
-
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopAudio(btnStop)
+    }
+    
+    // fix to adjust button sizes for smaller screens
     func refreshButtons() {
         
         let btns = [btnSlow, btnFast, btnLowPitch, btnHighPitch, btnEcho, btnReverb]
@@ -32,6 +39,34 @@ class PlayAudioViewController: UIViewController {
             b?.imageView?.contentMode = .scaleAspectFit
         }
         
+    }
+    
+    func updateUI() {
+        
+        let btns = [btnSlow, btnFast, btnLowPitch, btnHighPitch, btnEcho, btnReverb]
+        
+        if isPlaying {
+            btnStop.isEnabled = true
+            for b in btns {
+                b?.isEnabled = false
+            }
+        } else {
+            btnStop.isEnabled = false
+            for b in btns {
+                b?.isEnabled = true
+            }
+        }
+        
+    }
+    
+    @IBAction func playAudio(_ sender: Any) {
+        isPlaying = true
+        updateUI()
+    }
+    
+    @IBAction func stopAudio(_ sender: Any) {
+        isPlaying = false
+        updateUI()
     }
     
 }

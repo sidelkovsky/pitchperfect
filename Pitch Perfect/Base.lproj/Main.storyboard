@@ -21,6 +21,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rmy-nx-q9Y" userLabel="Record Button">
                                         <rect key="frame" x="0.0" y="0.0" width="155" height="156"/>
                                         <state key="normal" image="Record"/>
+                                        <connections>
+                                            <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LCE-jL-gfL"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3j-Z7-cht" userLabel="Hint Label">
                                         <rect key="frame" x="26.5" y="164" width="102" height="20.5"/>
@@ -36,7 +39,8 @@
                                         </constraints>
                                         <state key="normal" image="Stop"/>
                                         <connections>
-                                            <segue destination="GkN-l1-GXQ" kind="show" id="ulD-Kh-Lys"/>
+                                            <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2K3-IX-lvO"/>
+                                            <segue destination="GkN-l1-GXQ" kind="show" identifier="proceedToPlayback" id="brc-i7-PD0"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -54,6 +58,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="HjG-c4-j9r"/>
+                    <connections>
+                        <outlet property="btnRecord" destination="Rmy-nx-q9Y" id="YAo-XQ-4Tv"/>
+                        <outlet property="btnStop" destination="4b7-0a-iv2" id="W7B-ma-lZ3"/>
+                        <outlet property="lblHint" destination="V3j-Z7-cht" id="6uw-Y0-NNL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,10 +85,16 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zW-Rh-f8E" userLabel="Fast Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="116"/>
                                                 <state key="normal" image="Fast"/>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="C0n-PK-okK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3d-oY-963" userLabel="Slow Button">
                                                 <rect key="frame" x="160" y="0.0" width="160" height="116"/>
                                                 <state key="normal" image="Slow"/>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="emr-rn-woj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -89,10 +104,16 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKS-zz-pCt" userLabel="High Pitch Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="116"/>
                                                 <state key="normal" image="HighPitch"/>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="oUc-sw-Qqn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWb-va-nOR" userLabel="Low Pitch Button">
                                                 <rect key="frame" x="160" y="0.0" width="160" height="116"/>
                                                 <state key="normal" image="LowPitch"/>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="eog-an-6V6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -102,10 +123,16 @@
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pS-iW-VyN" userLabel="Echo Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="116"/>
                                                 <state key="normal" image="Echo"/>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="gxG-lC-UOD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L91-y1-MmI" userLabel="Reverb Button">
                                                 <rect key="frame" x="160" y="0.0" width="160" height="116"/>
                                                 <state key="normal" image="Reverb"/>
+                                                <connections>
+                                                    <action selector="playAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="dk9-43-r18"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -118,6 +145,9 @@
                                     <constraint firstAttribute="height" constant="64" id="XQ5-33-2XR"/>
                                 </constraints>
                                 <state key="normal" image="Stop"/>
+                                <connections>
+                                    <action selector="stopAudio:" destination="GkN-l1-GXQ" eventType="touchUpInside" id="d53-Wx-gBk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -152,7 +182,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f1X-0Z-eDA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7zq-l4-IJr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
